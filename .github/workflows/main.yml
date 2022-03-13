@@ -39,6 +39,8 @@ jobs:
         with:
          key: ${{ secrets.SSH_PRIVATE_KEY }}
          known_hosts: '[181.40.18.36]:2248 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAGhrFRK8NYyLeBSlksnSvImRAaBycjuHkpZjfpJtOxnJchCw91UUwPwiwutcMhyIWMzA3oD9D2RQVq3C3J6WHs='
+      - name: Printing sshkeyscan output
+        run: ssh-keyscan -p 2248  -T 1000 -H ${{ secrets.SSH_HOST }}
       - name: Adding Known Hosts
         run: ssh-keyscan -p 2248  -T 1000 -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
