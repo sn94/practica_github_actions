@@ -45,4 +45,4 @@ jobs:
         run: ssh-keyscan -p 2248  -T 1000 -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy with rsync
-        run: rsync -avz ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:2248/home/terreclientes/public_html/
+        run: rsync -avz 'ssh -p 2248' ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:2248/home/terreclientes/public_html/
